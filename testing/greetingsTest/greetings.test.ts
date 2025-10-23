@@ -8,6 +8,12 @@ describe("check the string", () => {
     expect(`Hello World`).toMatch("Hello"); // PASS
     // expect(`Hello World`).toMatch("hello");    // FAIL
     expect(`Hello World`).toMatch(/hello/i); // PASS
+
+    expect(`Hello World`).toMatch(/wOrLd/i); // PASS
+    // expect(`Hello World`).toMatch("wOrLd"); // FAIL
+
+    expect(`Hello World`).toMatch(/HELLO/i); // PASS
+    // expect(`Hello World`).toMatch("HELLO"); // FAIL
   });
 });
 
