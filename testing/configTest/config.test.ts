@@ -4,7 +4,7 @@ describe("initConfig", () => {
   it("should create a config with a nested user ID", () => {
     const config = initConfig("John Doe");
 
-    // This is the exact pattern from your exmaple!
+    // This is the exact pattern from your example!
     // we check that the path "user.name" exists AND has value "John Doe"
     expect(config).toHaveProperty("data.user.name", "John Doe");
   });
