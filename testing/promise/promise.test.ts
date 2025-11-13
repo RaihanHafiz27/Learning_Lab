@@ -28,7 +28,7 @@ describe("promise with async", () => {
     expect.assertions(1);
     try {
       await fetchUser(99);
-    } catch (error) {
+    } catch (error: any) {
       expect(error.message).toMatch(/not found/i);
     }
   });
