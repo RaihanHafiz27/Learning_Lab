@@ -35,65 +35,49 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-// Basic Promise (Classic Way)
-var fetchUsername = function (userId, delay) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            if (userId === 1) {
-                resolve("Anna Liebert");
-            }
-            else {
-                reject(new Error("User not found!!!"));
-            }
-        }, delay);
+var URLAPI = "https://jsonplaceholder.typicode.com/users";
+// with then and catch
+var getDataUsers = function (url) {
+    fetch(url)
+        .then(function (res) {
+        // we must check if the res was successful (status 200-299)
+        if (!res.ok) {
+            // if not ok, we throw an error to be caught by .catch()
+            throw new Error("HTTP error! Status : ".concat(res.status));
+        }
+        return res.json();
+    })
+        .then(function (data) { return console.log(data); })
+        .catch(function (error) {
+        console.log("Fetch failed : ".concat(error));
     });
 };
-console.log("Fetching Data...");
-// change the value to 2 if you want to see failure operation
-fetchUsername(1, 2000)
-    .then(function (res) { return console.log("username : ".concat(res.toUpperCase())); })
-    .catch(function (err) { return console.log("Oopss Sorry ".concat(err)); })
-    .finally(function () { return console.log("Operation Done✅"); });
-// Promise With Async (The Modern Way)
-var displayUsername = function (id) { return __awaiter(_this, void 0, void 0, function () {
-    var name_1, error_1;
+getDataUsers(URLAPI);
+// ==================================================================================== //
+// with async await try catch
+var getData = function (url) { return __awaiter(_this, void 0, void 0, function () {
+    var res, data, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, 3, 4]);
-                console.log("Fecthing User...");
-                return [4 /*yield*/, fetchUsername(id, 4000)];
+                _a.trys.push([0, 3, , 4]);
+                return [4 /*yield*/, fetch(url)];
             case 1:
-                name_1 = _a.sent();
-                console.log("name : ".concat(name_1.toUpperCase()));
-                return [3 /*break*/, 4];
+                res = _a.sent();
+                if (!res.ok) {
+                    throw new Error("HTTP error! Status : ".concat(res.status));
+                }
+                return [4 /*yield*/, res.json()];
             case 2:
-                error_1 = _a.sent();
-                console.log("Oopss ".concat(error_1));
+                data = _a.sent();
+                console.log(data);
                 return [3 /*break*/, 4];
             case 3:
-                console.log("Fecth Operation Complete✅");
-                return [7 /*endfinally*/];
+                error_1 = _a.sent();
+                console.log("Fetch failed : ".concat(error_1));
+                return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }
     });
 }); };
-// change the value to 1 if you want to see success operation
-displayUsername(2);
-// Basic Promise All and Race
-var p1 = Promise.resolve("Apple");
-var p2 = Promise.resolve("Banana");
-var p3 = Promise.resolve("Manggo");
-// const p3 = Promise.reject("Manggo");
-var allData = function () {
-    setTimeout(function () {
-        Promise.all([p1, p2, p3]).then(function (res) { return console.log(res); });
-    }, 5000);
-};
-var firstData = function () {
-    setTimeout(function () {
-        Promise.race([p1, p2, p3]).then(function (first) { return console.log(first); });
-    }, 5500);
-};
-allData();
-firstData();
+getData(URLAPI);

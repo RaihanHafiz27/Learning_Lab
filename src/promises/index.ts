@@ -35,3 +35,24 @@ const displayUsername = async (id: number) => {
 
 // change the value to 1 if you want to see success operation
 displayUsername(2);
+
+// Basic Promise All and Race
+const p1 = Promise.resolve("Apple");
+const p2 = Promise.resolve("Banana");
+const p3 = Promise.resolve("Manggo");
+// const p3 = Promise.reject("Manggo");
+
+const allData = () => {
+  setTimeout(() => {
+    Promise.all([p1, p2, p3]).then((res) => console.log(res));
+  }, 5000);
+};
+
+const firstData = () => {
+  setTimeout(() => {
+    Promise.race([p1, p2, p3]).then((first) => console.log(first));
+  }, 5500);
+};
+
+allData();
+firstData();

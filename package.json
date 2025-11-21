@@ -11,10 +11,14 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/node": "^24.10.1",
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
     "cross-env": "^10.0.0",
     "eslint": "^9.36.0",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
   }
 }
