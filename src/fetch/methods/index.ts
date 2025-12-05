@@ -1,6 +1,6 @@
-const URLAPI = "mockapi.io";
+const URLAPI = "https://691ffec531e684d7bfcb4dc8.mockapi.io/api/users/users";
 
-interface User {
+export interface User {
   id: string;
   name: string;
   age: number;
