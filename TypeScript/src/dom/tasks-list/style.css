@@ -1,0 +1,8 @@
+/* style.css */
+.bg-yellow {
+  background-color: yellow;
+  /* Biar makin cantik, tambah padding dikit */
+  padding: 5px;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
